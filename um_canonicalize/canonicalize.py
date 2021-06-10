@@ -43,7 +43,7 @@ import yaml
 # TODO(feature): Deal with locative case combinations like `IN+ESS`.
 # TODO(feature): Deal with the CN_R_MN switch-reference schemata.
 
-LGSPEC = r"LGSPEC(\d{2,})$"
+LGSPEC = r"LGSPEC(\d{1,})$"
 
 # Added to the integer in LGSPEC, this gives us its index.
 LGSPEC_START = 24
@@ -93,7 +93,7 @@ def main() -> None:
                 except KeyError:
                     mtc = re.match(LGSPEC, feature)
                     if mtc:
-                        index = LGSPEC_START + int(mtc.group(2))
+                        index = LGSPEC_START + int(mtc.group(1))
                     else:
                         logging.error(
                             "Unknown feature: %r (file %s, line %d)",
